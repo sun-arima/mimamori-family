@@ -125,7 +125,7 @@ function AppShell() {
 
 function App() {
   return (
-    <BrowserRouter basename="/mimamori-family">
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <AppShell />
     </BrowserRouter>
   );
