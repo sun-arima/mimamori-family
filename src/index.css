@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════
+   Design Tokens – 高齢者見守りアプリ
+   ═══════════════════════════════════════════ */
+@theme {
+  --color-primary: #7BB5A0;
+  --color-on-primary: #FFFFFF;
+  --color-primary-container: #D4EDE4;
+  --color-on-primary-container: #1A3D30;
+
+  --color-accent: #F4A261;
+  --color-on-accent: #FFFFFF;
+  --color-accent-container: #FDE8D0;
+  --color-on-accent-container: #3D2800;
+
+  --color-error: #C0392B;
+  --color-on-error: #FFFFFF;
+  --color-error-container: #FDDDD8;
+  --color-on-error-container: #4A0E08;
+
+  --color-surface: #FAFAF8;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #F5F5F2;
+  --color-surface-container: #EFEFEC;
+  --color-surface-container-high: #E8E8E5;
+  --color-surface-container-highest: #E0E0DD;
+  --color-on-surface: #2D3748;
+  --color-on-surface-variant: #5A6577;
+  --color-outline: #8896A6;
+  --color-outline-variant: #CDD5DE;
+
+  --color-inverse-surface: #2D3748;
+  --color-inverse-on-surface: #F0F2F5;
+}
+
+/* ═══════════════════════════════════════════
+   Base
+   ═══════════════════════════════════════════ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  background-color: #FAFAF8;
+  color: #2D3748;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100svh;
+  background: #FAFAF8;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Material Symbols */
+.material-symbols-rounded {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  vertical-align: middle;
+  user-select: none;
+}
+.material-symbols-rounded.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ═══════════════════════════════════════════
+   Elevation (M3)
+   ═══════════════════════════════════════════ */
+.elevation-1 { box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06); }
+.elevation-2 { box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06); }
+.elevation-3 { box-shadow: 0 4px 10px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06); }
+
+/* ═══════════════════════════════════════════
+   Motion
+   ═══════════════════════════════════════════ */
+.page-enter { animation: fadeIn 0.3s ease-out; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.m3-state {
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
+}
+.m3-state:active { background-color: rgba(123,181,160,0.1); }
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes gentlePulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.7; transform:scale(1.2); }
+}
+.pulse-marker { animation: gentlePulse 2s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════
+   Cards – M3: 16px padding, 12px radius
+   ═══════════════════════════════════════════ */
+.m3-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+}
+.m3-card-outlined {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #CDD5DE;
+}
+.m3-card-elevated {
+  background: #F5F5F2;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+}
+
+/* ═══════════════════════════════════════════
+   Chips
+   ═══════════════════════════════════════════ */
+.m3-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #CDD5DE;
+  background: transparent;
+  color: #2D3748;
+  cursor: pointer;
+}
+.m3-chip.selected {
+  background: #D4EDE4;
+  color: #1A3D30;
+  border-color: transparent;
+}
+
+/* ═══════════════════════════════════════════
+   Buttons – M3: 48px height, 16px font
+   ═══════════════════════════════════════════ */
+.m3-fab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #D4EDE4;
+  color: #1A3D30;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.15s;
+}
+.m3-fab:active { transform: scale(0.97); }
+
+.m3-btn-filled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background: #7BB5A0;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.m3-btn-filled:active { transform: scale(0.97); }
+
+.m3-btn-tonal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 100px;
+  background: #D4EDE4;
+  color: #1A3D30;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.m3-btn-tonal:active { transform: scale(0.97); }
+
+/* Segmented Button */
+.m3-segmented {
+  display: flex;
+  border: 1.5px solid #7BB5A0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.m3-segmented button {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #2D3748;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.m3-segmented button.active {
+  background: #7BB5A0;
+  color: #FFFFFF;
+}
